@@ -112,7 +112,7 @@ public class ConnectionIT
         k3po.finish();
     }
 
-    @Ignore
+    @Ignore ("Not supported")
     @Test
     @ScriptProperty("serverAccept 'nukleus://target/streams/socks#source'")
     @Specification({
