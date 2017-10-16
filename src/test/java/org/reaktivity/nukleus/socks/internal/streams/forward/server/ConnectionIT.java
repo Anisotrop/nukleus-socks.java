@@ -58,6 +58,16 @@ public class ConnectionIT
         k3po.finish();
     }
 
+    @Test
+    @Specification({
+        "${route}/server/controller",
+        "${client}/client.connect.send.data.ipv6.addr/client",
+        "${server}/client.connect.send.data.ipv6.addr/server"})
+    public void shouldAcceptAndSendDataBothWaysIPv6() throws Exception
+    {
+        k3po.finish();
+    }
+
     @Ignore
     @Test
     @Specification({
@@ -86,6 +96,17 @@ public class ConnectionIT
         "${client}/client.connect.request.with.command.not.supported/client",
         "${server}/client.connect.request.with.command.not.supported/server"})
     public void shouldNotEstablishConnectionCommandNotSupported() throws Exception
+    {
+        k3po.finish();
+    }
+
+    @Ignore
+    @Test
+    @Specification({
+        "${route}/server/controller",
+        "${client}/client.connect.request.with.addr.type.not.supported/client",
+        "${server}/client.connect.request.with.addr.type.not.supported/server"})
+    public void shouldNotEstablishConnectionAddrTypeNotSupported() throws Exception
     {
         k3po.finish();
     }

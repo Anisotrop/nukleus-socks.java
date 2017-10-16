@@ -61,6 +61,18 @@ public class ConnectionIT
         k3po.finish();
     }
 
+    @Test
+    @ScriptProperty("serverAccept 'nukleus://target/streams/socks#source'")
+    @Specification({
+        "${route}/client/controller",
+        "${client}/client.connect.send.data.ipv6.addr/client",
+        "${server}/client.connect.send.data.ipv6.addr/server"
+    })
+    public void shouldConnectAndSendDataBothWaysIPv6() throws Exception
+    {
+        k3po.finish();
+    }
+
     @Ignore
     @Test
     @ScriptProperty("serverAccept 'nukleus://target/streams/socks#source'")
@@ -100,4 +112,16 @@ public class ConnectionIT
         k3po.finish();
     }
 
+    @Ignore
+    @Test
+    @ScriptProperty("serverAccept 'nukleus://target/streams/socks#source'")
+    @Specification({
+        "${route}/client/controller",
+        "${client}/client.connect.request.with.addr.type.not.supported/client",
+        "${server}/client.connect.request.with.addr.type.not.supported/server"
+    })
+    public void shouldNotEstablishConnectionAddrTypeNotSupported() throws Exception
+    {
+        k3po.finish();
+    }
 }
