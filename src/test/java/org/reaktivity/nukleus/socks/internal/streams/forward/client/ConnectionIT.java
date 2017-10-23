@@ -62,6 +62,7 @@ public class ConnectionIT
     }
 
     @Test
+    @Ignore
     @ScriptProperty("serverAccept 'nukleus://target/streams/socks#source'")
     @Specification({
         "${route}/client/controller",
@@ -121,6 +122,31 @@ public class ConnectionIT
         "${server}/client.connect.request.with.addr.type.not.supported/server"
     })
     public void shouldNotEstablishConnectionAddrTypeNotSupported() throws Exception
+    {
+        k3po.finish();
+    }
+
+    @Ignore
+    @Test
+    @ScriptProperty("serverAccept 'nukleus://target/streams/socks#source'")
+    @Specification({
+        "${route}/client/controller",
+        "${client}/client.connect.request.general.failure/client",
+        "${server}/client.connect.request.general.failure/server"
+    })
+    public void shouldNotEstablishConnectionGeneralFailure() throws Exception
+    {
+        k3po.finish();
+    }
+
+    @Test
+    @ScriptProperty("serverAccept 'nukleus://target/streams/socks#source'")
+    @Specification({
+        "${route}/client/controller",
+        "${client}/client.sends.request.with.socks.version.6/client",
+        "${server}/client.sends.request.with.socks.version.6/server"
+    })
+    public void shouldNotEstablishConnectionSocksVersion6() throws Exception
     {
         k3po.finish();
     }

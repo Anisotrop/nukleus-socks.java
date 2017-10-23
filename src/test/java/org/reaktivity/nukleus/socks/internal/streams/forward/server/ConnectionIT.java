@@ -58,6 +58,7 @@ public class ConnectionIT
         k3po.finish();
     }
 
+    @Ignore
     @Test
     @Specification({
         "${route}/server/controller",
@@ -107,6 +108,28 @@ public class ConnectionIT
         "${client}/client.connect.request.with.addr.type.not.supported/client",
         "${server}/client.connect.request.with.addr.type.not.supported/server"})
     public void shouldNotEstablishConnectionAddrTypeNotSupported() throws Exception
+    {
+        k3po.finish();
+    }
+
+    @Ignore
+    @Test
+    @Specification({
+        "${route}/server/controller",
+        "${client}/client.connect.request.general.failure/client",
+        "${server}/client.connect.request.general.failure/server"})
+    public void shouldNotEstablishConnectionGeneralFailure() throws Exception
+    {
+        k3po.finish();
+    }
+
+    @Ignore
+    @Test
+    @Specification({
+        "${route}/server/controller",
+        "${client}/client.sends.request.with.socks.version.6/client",
+        "${server}/client.sends.request.with.socks.version.6/server"})
+    public void shouldNotEstablishConnectionSocksVersion6() throws Exception
     {
         k3po.finish();
     }
