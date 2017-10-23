@@ -69,6 +69,16 @@ public class ConnectionIT
         k3po.finish();
     }
 
+    @Test
+    @Specification({
+        "${route}/server/controller",
+        "${client}/client.connect.send.data.throttling.server.smaller/client",
+        "${server}/client.connect.send.data.throttling.server.smaller/server"})
+    public void shouldAcceptAndSendDataBothWaysWithThrottlingServerSmaller() throws Exception
+    {
+        k3po.finish();
+    }
+
     @Ignore
     @Test
     @Specification({
@@ -83,6 +93,16 @@ public class ConnectionIT
     @Test
     @Specification({
         "${route}/server/controller",
+        "${client}/client.connect.send.data.throttling.client.smaller/client",
+        "${server}/client.connect.send.data.throttling.client.smaller/server"})
+    public void shouldAcceptAndSendDataBothWaysWithThrottlingClientSmaller() throws Exception
+    {
+        k3po.finish();
+    }
+
+    @Test
+    @Specification({
+        "${route}/server/controller",
         "${client}/client.connect.fallback.to.no.authentication/client",
         "${server}/client.connect.fallback.to.no.authentication/server"})
     public void shouldEstablishConnectionFallbackToNoAuthentication() throws Exception
@@ -90,12 +110,10 @@ public class ConnectionIT
         k3po.finish();
     }
 
-    @Ignore
     @Test
     @Specification({
         "${route}/server/controller",
-        "${client}/client.connect.request.with.command.not.supported/client",
-        "${server}/client.connect.request.with.command.not.supported/server"})
+        "${client}/client.connect.request.with.command.not.supported/client"})
     public void shouldNotEstablishConnectionCommandNotSupported() throws Exception
     {
         k3po.finish();
