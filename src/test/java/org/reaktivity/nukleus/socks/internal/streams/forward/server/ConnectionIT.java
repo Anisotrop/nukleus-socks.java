@@ -58,6 +58,17 @@ public class ConnectionIT
         k3po.finish();
     }
 
+    @Ignore
+    @Test
+    @Specification({
+        "${route}/server/controller",
+        "${client}/client.connect.send.data.ipv6.addr/client",
+        "${server}/client.connect.send.data.ipv6.addr/server"})
+    public void shouldAcceptAndSendDataBothWaysIPv6() throws Exception
+    {
+        k3po.finish();
+    }
+
     @Test
     @Specification({
         "${route}/server/controller",
@@ -68,12 +79,13 @@ public class ConnectionIT
         k3po.finish();
     }
 
+    @Ignore
     @Test
     @Specification({
         "${route}/server/controller",
-        "${client}/client.connect.send.data.throttling.client.smaller/client",
-        "${server}/client.connect.send.data.throttling.client.smaller/server"})
-    public void shouldAcceptAndSendDataBothWaysWithThrottlingClientSmaller() throws Exception
+        "${client}/client.does.not.connect.no.acceptable.methods/client",
+        "${server}/client.does.not.connect.no.acceptable.methods/server"})
+    public void shouldNotEstablishConnectionNoAcceptableMethods() throws Exception
     {
         k3po.finish();
     }
@@ -81,8 +93,9 @@ public class ConnectionIT
     @Test
     @Specification({
         "${route}/server/controller",
-        "${client}/client.does.not.connect.no.acceptable.methods/client"})
-    public void shouldNotEstablishConnectionNoAcceptableMethods() throws Exception
+        "${client}/client.connect.send.data.throttling.client.smaller/client",
+        "${server}/client.connect.send.data.throttling.client.smaller/server"})
+    public void shouldAcceptAndSendDataBothWaysWithThrottlingClientSmaller() throws Exception
     {
         k3po.finish();
     }
@@ -102,6 +115,39 @@ public class ConnectionIT
         "${route}/server/controller",
         "${client}/client.connect.request.with.command.not.supported/client"})
     public void shouldNotEstablishConnectionCommandNotSupported() throws Exception
+    {
+        k3po.finish();
+    }
+
+    @Ignore
+    @Test
+    @Specification({
+        "${route}/server/controller",
+        "${client}/client.connect.request.with.addr.type.not.supported/client",
+        "${server}/client.connect.request.with.addr.type.not.supported/server"})
+    public void shouldNotEstablishConnectionAddrTypeNotSupported() throws Exception
+    {
+        k3po.finish();
+    }
+
+    @Ignore
+    @Test
+    @Specification({
+        "${route}/server/controller",
+        "${client}/client.connect.request.general.failure/client",
+        "${server}/client.connect.request.general.failure/server"})
+    public void shouldNotEstablishConnectionGeneralFailure() throws Exception
+    {
+        k3po.finish();
+    }
+
+    @Ignore
+    @Test
+    @Specification({
+        "${route}/server/controller",
+        "${client}/client.sends.request.with.socks.version.6/client",
+        "${server}/client.sends.request.with.socks.version.6/server"})
+    public void shouldNotEstablishConnectionSocksVersion6() throws Exception
     {
         k3po.finish();
     }
